@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}{{ 'Edit' if item and item.get('id') else 'Create' }} Item{% endblock %}
+{% block content %}
+  <h1 class="h3 mb-3">{{ 'Edit' if item and item.get('id') else 'Create' }} Item</h1>
+  <form method="post">
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input name="name" class="form-control" value="{{ item['name'] if item and item.get('name') else '' }}">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Description</label>
+      <textarea name="description" class="form-control" rows="4">{{ item['description'] if item and item.get('description') else '' }}</textarea>
+    </div>
+    <button class="btn btn-primary" type="submit">Save</button>
+    <a class="btn btn-secondary" href="{{ url_for('index') }}">Cancel</a>
+  </form>
+{% endblock %}
